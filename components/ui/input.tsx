@@ -1,15 +1,16 @@
-import * as React from "react"
+import * as React from "react";
+import { cn } from "@/lib/utils"; // Assuming you have a class name utility
 
-import { cn } from "@/lib/utils"
-
+// Define the InputProps interface
 export interface InputProps
   extends React.InputHTMLAttributes<HTMLInputElement> {}
 
-export const Input = React.forwardRef<HTMLInputElement, React.InputHTMLAttributes<HTMLInputElement>>>(
-  ({ className, type, ...props }, ref) => {
+// Input component using forwardRef
+export const Input = React.forwardRef<HTMLInputElement, InputProps>(
+  ({ className, type = "text", ...props }, ref) => {
     return (
       <input
-        type={type}
+        type={type} // Default type to "text"
         className={cn("your-class-names", className)}
         ref={ref}
         {...props}
@@ -18,6 +19,8 @@ export const Input = React.forwardRef<HTMLInputElement, React.InputHTMLAttribute
   }
 );
 
-Input.displayName = "Input"
+// Set a display name for better debugging in React DevTools
+Input.displayName = "Input";
 
-export { Input }
+// Export the Input component
+export { Input };
