@@ -49,9 +49,6 @@ export default function GeneratePassword() {
     navigator.clipboard.writeText(password).then(
       () => {
         alert("Password copied to clipboard!");
-      },
-      () => {
-        alert("Failed to copy password to clipboard."); // No err variable used
       }
     );
   };
