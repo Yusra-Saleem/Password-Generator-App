@@ -5,15 +5,16 @@ import { useState, ChangeEvent } from "react";
 
 // Import custom UI components from the UI directory
 import {
-  Card
+  Card,
 } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
-import { Checkbox, CheckedState } from "@/components/ui/checkbox";
+import { Checkbox } from "@/components/ui/checkbox";
+import { CheckedState } from "@radix-ui/react-checkbox";
 import { Button } from "@/components/ui/button";
 
 // Default export of the GeneratePasswordComponent function
-export default function GeneratePasswordComponent() {
+export default function GeneratePassword() {
   // State hooks for managing password generation options and the generated password
   const [length, setLength] = useState<number>(16);
   const [includeUppercase, setIncludeUppercase] = useState<boolean>(true);
@@ -59,7 +60,7 @@ export default function GeneratePasswordComponent() {
       () => {
         alert("Password copied to clipboard!"); // Alert on successful copy
       },
-      () => {
+      (err) => {
         alert("Failed to copy password to clipboard."); // Alert on failed copy
       }
     );
@@ -68,15 +69,16 @@ export default function GeneratePasswordComponent() {
   // Handler for updating the checkbox states
   const handleCheckboxChange =
     (setter: (value: boolean) => void) =>
-      (checked: CheckedState): void => {
-        if (typeof checked === "boolean") {
-          setter(checked);
-        }
-      };
+    (checked: CheckedState): void => {
+      if (typeof checked === "boolean") {
+        setter(checked);
+      }
+    };
 
   // JSX return statement rendering the password generator UI
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-400 dark:bg-gray-900">
+    
+<div className="flex flex-col items-center justify-center min-h-screen bg-gray-400 dark:bg-gray-900">
       {/* Center the password generator card within the screen */}
       <Card className="w-full max-w-md p-3 text-white bg-blue-300 shadow-lg rounded-lg">
         <div className="mx-auto  bg-slate-900 p-6 max-w-md space-y-6">
